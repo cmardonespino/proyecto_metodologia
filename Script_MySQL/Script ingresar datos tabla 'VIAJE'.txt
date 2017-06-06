@@ -1,0 +1,2 @@
+INSERT INTO viaje (id_viaje, salida, inicio, destino, estado)
+VALUES ('12DSA2', '2017-05-24 13:00:02', 'Santiago', 'Melipilla', true)

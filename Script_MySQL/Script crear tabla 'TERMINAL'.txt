@@ -1,0 +1,5 @@
+CREATE TABLE Terminal (
+id_bus VARCHAR(30) NOT NULL,
+ubicacion VARCHAR(30) NOT NULL,
+estado BOOLEAN DEFAULT NULL
+)

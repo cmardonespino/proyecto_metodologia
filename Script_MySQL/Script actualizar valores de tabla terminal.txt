@@ -1,0 +1,1 @@
+UPDATE `terminal` SET `ciudad`='Santiago',`comuna`='Melipilla',`patente`='XH6640',`disponible`=1 WHERE disponible=127

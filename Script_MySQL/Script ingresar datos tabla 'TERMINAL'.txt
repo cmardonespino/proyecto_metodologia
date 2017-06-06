@@ -1,0 +1,2 @@
+INSERT INTO terminal (id_bus, ubicacion, estado)
+VALUES ('MT738', 'Melipilla', 1)

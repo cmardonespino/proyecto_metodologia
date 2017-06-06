@@ -1,0 +1,2 @@
+INSERT INTO administrador (idadministrador, password)
+VALUES (112233, 1234)

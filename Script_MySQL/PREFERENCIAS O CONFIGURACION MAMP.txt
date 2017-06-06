@@ -1,0 +1,3 @@
+Apache Port: 80
+Nginx Port: 80
+MySQL Port: 3307
