@@ -3,11 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+/* validador */
+/* https://stackoverflow.com/questions/23905985/validation-input-to-be-string-only-and-numbers-only-java */
+
 package Modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -91,25 +97,30 @@ public class Administrador extends Persona{
         this.correo = correo;
     }
     
-    public Administrador verificarUsuario(String usuario, String password){
+    public ArrayList<String> verificarUsuario(String usuario, String password){
         Administrador administrador = null;
+        ArrayList<String> vusuario = new ArrayList<String>();
         Connection accesoDB = conexion.conectar();
-        try{
-            PreparedStatement ps = accesoDB.prepareStatement("SELECT * FROM administrador WHERE user='"+usuario+"' and password='"+password+"'");
-            rs = ps.executeQuery();
-            int a = 0;
-            if(rs.next()) {
-                administrador = new Administrador();
-                administrador.setNombre(rs.getString("nombre"));
-                administrador.setIDAdministrador(rs.getString("usuario"));
-                administrador.setPassword(rs.getString("password"));
+        if(!usuario.matches("[0-9]+")){
+            return vusuario;
+        }
+        else{
+            try{
+                PreparedStatement ps = accesoDB.prepareStatement("SELECT * FROM administrador WHERE id_admin='"+usuario+"' and password='"+password+"'");
+                rs = ps.executeQuery();
+                int a = 0;
+                while(rs.next()) {
+                    if(usuario.equals(rs.getString("id_admin")) && password.equals(rs.getString("password"))){
+                        vusuario.add(rs.getString("nombre"));
+                        vusuario.add(rs.getString("id_admin"));
+                        vusuario.add(rs.getString("password"));
+                        return vusuario;
+                    }
+                }
+                return vusuario;
+            }catch(Exception e){
+                return vusuario;
             }
-            if(usuario.equals(rs.getString("usuario")) && password.equals(rs.getString("password"))){
-                return administrador;
-            }
-            return null;
-        }catch(Exception e){
-            return administrador;
         }
     }
     

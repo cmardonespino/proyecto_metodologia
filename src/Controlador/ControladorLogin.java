@@ -10,6 +10,7 @@ import Vista.VistaLogin;
 import Vista.VistaOpciones;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -43,16 +44,17 @@ public class ControladorLogin implements ActionListener{
     class Ingresar implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
+            ArrayList<String> admin = new ArrayList<String>();
             String user = vistaLogin.txtIngresarUsuario.getText();
             char[] password = vistaLogin.txtIngresarPasswordLogin.getPassword();
-            administrador = administrador.verificarUsuario(user, String.valueOf(password));
+            admin = administrador.verificarUsuario(user, String.valueOf(password));
             /*JOptionPane.showMessageDialog(vistaLogin, user);
             JOptionPane.showMessageDialog(vistaLogin, password);*/
-            if(administrador==null){
+            if(admin.isEmpty()){
                 JOptionPane.showMessageDialog(vistaLogin, "Usuario o contraseña incorrecta");
             }else{
                 String nombre = administrador.getNombre();
-                JOptionPane.showMessageDialog(vistaLogin, "Bienvenido "+ nombre);
+                JOptionPane.showMessageDialog(vistaLogin, "Bienvenido "+ admin.get(0));
                 ControladorOpciones controladorOpciones = new ControladorOpciones(vistaOpciones);
                 vistaOpciones.setVisible(true);
                 vistaLogin.setVisible(false);
