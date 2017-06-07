@@ -153,13 +153,13 @@ public class Chofer extends Persona{
         Chofer chofer = null;
         Connection accesoDB = conexion.conectar();
         int rsu = 0;
-            try{
-                ps = accesoDB.prepareStatement("INSERT INTO chofer (id_chofer, nombre, edad, telefono, correo, ubicacion, direccion, estado) " +
+        try{
+            ps = accesoDB.prepareStatement("INSERT INTO chofer (id_chofer, nombre, edad, telefono, correo, ubicacion, direccion, estado) " +
                 "VALUES ('"+run+"', '"+nombre+"', "+edad+", '"+telefono+"', '"+correo+"', '"+ubicacion+"', '"+direccion+"', "+true+")");
-                rsu = ps.executeUpdate();
-                return 1;
-            }catch(Exception e){
-                return 0;
+            rsu = ps.executeUpdate();
+            return 1;
+        }catch(Exception e){
+            return 0;
         }
     }
     

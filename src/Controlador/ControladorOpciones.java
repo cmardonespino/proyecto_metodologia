@@ -23,6 +23,7 @@ public class ControladorOpciones implements ActionListener{
     VistaBuscarBus vbbus = new VistaBuscarBus();
     VistaChoferesDisponibles vchd = new VistaChoferesDisponibles();
     VistaBusesDisponibles vbd = new VistaBusesDisponibles();
+    VistaAgregarBus vab = new VistaAgregarBus();
     
     //VistaAgregarBus vistaAgregarBus = new VistaAgregarBus();
     
@@ -40,6 +41,7 @@ public class ControladorOpciones implements ActionListener{
         this.vistaBuscarChofer = vistaBuscarChofer;
         this.vbbus = vbbus;
         this.vchd = vchd;
+        this.vab = vab;
         
         //this.vistaAgregarBus = vistaAgregarBus;
         
@@ -74,7 +76,9 @@ public class ControladorOpciones implements ActionListener{
                 vchd.setVisible(true);
                 vistaOpciones.setVisible(false);
             }else if(o=="Agregar Bus"){
-                //ControladorAgregarBus controladorAgregarBus = new ControladorAgregarBus(vistaAgregarBus, busDAO);
+                ControladorAgregarBus controladorAgregarBus = new ControladorAgregarBus(vab, bus);
+                vab.setVisible(true);
+                vistaOpciones.setVisible(false);
             }else if(o=="Buscar Bus"){
                 ControladorBuscarBus controladorBuscarBus = new ControladorBuscarBus(vbbus, bus);
                 vbbus.setVisible(true);

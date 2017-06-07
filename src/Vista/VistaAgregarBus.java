@@ -33,8 +33,8 @@ public class VistaAgregarBus extends javax.swing.JFrame {
         comboBoxEstadoBus = new javax.swing.JComboBox<>();
         comboBoxTerminalUbicacion = new javax.swing.JComboBox<>();
         txtPatenteBus = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botonAgregarBus = new javax.swing.JButton();
+        botonAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,14 +48,14 @@ public class VistaAgregarBus extends javax.swing.JFrame {
 
         comboBoxTerminalUbicacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Melipilla", "San Antonio" }));
 
-        jButton1.setText("Agregar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonAgregarBus.setText("Agregar");
+        botonAgregarBus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonAgregarBusActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Atrás");
+        botonAtras.setText("Atrás");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,9 +76,9 @@ public class VistaAgregarBus extends javax.swing.JFrame {
                             .addComponent(comboBoxEstadoBus, 0, 80, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(88, 88, 88)
-                        .addComponent(jButton1)
+                        .addComponent(botonAgregarBus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)))
+                        .addComponent(botonAtras)))
                 .addContainerGap(101, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -98,17 +98,17 @@ public class VistaAgregarBus extends javax.swing.JFrame {
                     .addComponent(comboBoxEstadoBus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(botonAgregarBus)
+                    .addComponent(botonAtras))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonAgregarBusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarBusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonAgregarBusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,10 +146,10 @@ public class VistaAgregarBus extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton botonAgregarBus;
+    public javax.swing.JButton botonAtras;
     public javax.swing.JComboBox<String> comboBoxEstadoBus;
     public javax.swing.JComboBox<String> comboBoxTerminalUbicacion;
-    public javax.swing.JButton jButton1;
-    public javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
