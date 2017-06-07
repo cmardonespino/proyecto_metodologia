@@ -24,6 +24,7 @@ public class ControladorOpciones implements ActionListener{
     VistaChoferesDisponibles vchd = new VistaChoferesDisponibles();
     VistaBusesDisponibles vbd = new VistaBusesDisponibles();
     VistaAgregarBus vab = new VistaAgregarBus();
+    VistaViajesDisponibles vvd = new VistaViajesDisponibles();
     
     //VistaAgregarBus vistaAgregarBus = new VistaAgregarBus();
     
@@ -32,6 +33,7 @@ public class ControladorOpciones implements ActionListener{
     Object o = new Object();
     Chofer chofer = new Chofer();
     Bus bus = new Bus();
+    Viaje viaje = new Viaje();
     
     public ControladorOpciones(VistaOpciones vistaOpciones){
         this.vistaOpciones = vistaOpciones;
@@ -90,7 +92,9 @@ public class ControladorOpciones implements ActionListener{
                 vbd.setVisible(true);
                 vistaOpciones.setVisible(false);
             }else if(o == "Viajes Disponibles"){
-                //
+                ControladorViajesDisponibles controladorViajesDisponibles = new ControladorViajesDisponibles(vvd, viaje);
+                vvd.setVisible(true);
+                vistaOpciones.setVisible(false);
             }
                 
         }

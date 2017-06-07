@@ -5,10 +5,9 @@
  */
 package Controlador;
 
-import Modelo.Bus;
-import Modelo.Chofer;
-import Vista.VistaBusesDisponibles;
+import Modelo.Viaje;
 import Vista.VistaOpciones;
+import Vista.VistaViajesDisponibles;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -19,20 +18,18 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Carlos
  */
-public class ControladorBusesDisponibles {
-    VistaBusesDisponibles vbd = new VistaBusesDisponibles();
+public class ControladorViajesDisponibles {
+    VistaViajesDisponibles vvd = new VistaViajesDisponibles();
     VistaOpciones vopciones = new VistaOpciones();
     
-    Chofer chofer = new Chofer();
-    Bus bus = new Bus();
+    Viaje viaje = new Viaje();
     
-    public ControladorBusesDisponibles(VistaBusesDisponibles vbd, Chofer chofer){
-        this.vbd= vbd;
-        this.chofer = chofer;
-        this.bus = bus;
+    public ControladorViajesDisponibles(VistaViajesDisponibles vvd, Viaje viaje){
+        this.vvd= vvd;
+        this.viaje = viaje;
         
-        this.vbd.botonBuscar.addActionListener(new Buscar());
-        this.vbd.botonAtras.addActionListener(new Atras());
+        this.vvd.botonBuscarViajesDisponibles.addActionListener(new Buscar());
+        this.vvd.botonAtras.addActionListener(new Atras());
     }
     
     public void actionPerformed(ActionEvent ae) {
@@ -42,25 +39,24 @@ public class ControladorBusesDisponibles {
     class Buscar implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
-            ArrayList<String> buses = new ArrayList<String>();
+            ArrayList<String> viajes = new ArrayList<String>();
             String filas[] = new String[100];
-            buses = bus.busesDisponibles();
-            if(buses.isEmpty()){
-                JOptionPane.showMessageDialog(vbd, "No hay buses disponibles");
+            viajes = viaje.viajesDisponibles();
+            if(viajes.isEmpty()){
+                JOptionPane.showMessageDialog(vvd, "No hay viajes disponibles");
             }else{
-            
                 DefaultTableModel m;
-                String titulos[] = {"Patente", "Ubicación", "Estado"};
+                String titulos[] = {"ID Viaje", "Hora inicio", "Hora destino", "Inicio", "Destino", "Estado"};
                 m = new DefaultTableModel(null, titulos);
-                vbd.tablaBusesDisponibles.setModel(m);
+                vvd.tablaMostrarViajesDisponibles.setModel(m);
 
                 int i=0, j=0;
-                for(String d:buses){
+                for(String d:viajes){
                     filas[i]=d;
                     i++;
-                    if(i==3){
+                    if(i==6){
                         m.addRow(filas);
-                        vbd.tablaBusesDisponibles.setModel(m);
+                        vvd.tablaMostrarViajesDisponibles.setModel(m);
                         i=0;
                     }
                 }
@@ -72,7 +68,7 @@ public class ControladorBusesDisponibles {
         public void actionPerformed(ActionEvent e){
             ControladorOpciones controladorOpciones = new ControladorOpciones(vopciones);
             vopciones.setVisible(true);
-            vbd.setVisible(false);
+            vvd.setVisible(false);
         }
     }
 }
