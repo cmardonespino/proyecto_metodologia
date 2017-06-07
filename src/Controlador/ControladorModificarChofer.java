@@ -11,6 +11,8 @@ import Vista.VistaModificarChofer;
 import Vista.VistaOpciones;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,7 +24,7 @@ public class ControladorModificarChofer implements ActionListener{
     VistaBuscarChofer vistaBuscarChofer = new VistaBuscarChofer();
     Chofer chofer = new Chofer();
     
-    Object o = new Object();
+    Object opcion = new Object();
     
     String run;
     
@@ -47,7 +49,37 @@ public class ControladorModificarChofer implements ActionListener{
     class Modificar implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
-            
+            ArrayList<String> choferes = new ArrayList<String>();
+            choferes = chofer.verificarChofer(run);
+            int a;
+            if(!choferes.isEmpty()){
+                String nombre = vistaModificarChofer.txtIngresarNombreModificar.getText();
+                String telefono = vistaModificarChofer.txtIngresarTelefonoModificar.getText();
+                String correo = vistaModificarChofer.txtIngresarCorreoModificar.getText();
+                String direccion = vistaModificarChofer.txtIngresarDireccionModificar.getText();
+                opcion = vistaModificarChofer.comboBoxOpcionEstado.getSelectedItem();
+                //opcion = vistaModificarChofer.checkBoxActivo.isSelected();
+                if(opcion=="Activo"){
+                    a = chofer.modificarChofer(run, nombre, telefono, direccion, correo, true);
+                    if(a==1){
+                        JOptionPane.showMessageDialog(vistaModificarChofer, "Datos de chofer modificados exitosamente");
+                    }else{
+                        JOptionPane.showMessageDialog(vistaModificarChofer, "Problemas al modificar datos del chofer."
+                                + " Intentelo nuevamente.");
+                    }
+                }else if(opcion=="Bloqueado"){
+                    a = chofer.modificarChofer(run, nombre, telefono, direccion, correo, false);
+                    if(a==1){
+                        JOptionPane.showMessageDialog(vistaModificarChofer, "Datos de chofer modificados exitosamente");
+                    }else{
+                        JOptionPane.showMessageDialog(vistaModificarChofer, "Problemas al modificar datos del chofer."
+                                + " Intentelo nuevamente.");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(vistaModificarChofer, "Estamos trabajando para usted :v. Opcion"
+                            + " aun en desarrollo!");
+                }
+            }
         }
     }
     

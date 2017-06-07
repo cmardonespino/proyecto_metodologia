@@ -10,6 +10,7 @@ import Vista.VistaAgregarChofer;
 import Vista.VistaOpciones;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -44,26 +45,31 @@ public class ControladorAgregarChofer implements ActionListener{
     class Agregar implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
+            ArrayList<String> choferes = new ArrayList<String>();
             String run = vistaAgregarChofer.txtIngresarRUN.getText();
-            chofer = chofer.verificarChofer(run);
-            Chofer agregarChofer = null;
-            if(chofer==null){
+            choferes = chofer.verificarChofer(run);
+            if(choferes.isEmpty()){
                 String nombre = vistaAgregarChofer.txtIngresarNombre.getText();
                 int edad = Integer.parseInt(vistaAgregarChofer.txtIngresarEdad.getText());
                 String telefono = vistaAgregarChofer.txtIngresarTelefono.getText();
                 String correo = vistaAgregarChofer.txtIngresarCorreo.getText();
                 String direccion = vistaAgregarChofer.txtIngresarDireccion.getText();
                 opcion = vistaAgregarChofer.comboBoxUbicacion.getSelectedItem();
-                JOptionPane.showMessageDialog(vistaAgregarChofer, opcion);
                 if(opcion=="Santiago"){
-                    JOptionPane.showMessageDialog(vistaAgregarChofer, "Chofer agregado exitosamente");
-                    agregarChofer = chofer.agregarChofer("Santiago", nombre, edad, run, telefono, direccion, correo, true);
+                    int a = chofer.agregarChofer("Santiago", nombre, edad, run, telefono, direccion, correo, true);
+                    if(a!=1)
+                        JOptionPane.showMessageDialog(vistaAgregarChofer, "El chofer ya existe en el sistema");
+                    else
+                        JOptionPane.showMessageDialog(vistaAgregarChofer, "Chofer agregado exitosamente");
                 }else if(opcion=="San Antonio"){
-                    agregarChofer = chofer.agregarChofer("San Antonio", nombre, edad, run, telefono, direccion, correo, true);
+                    int a = chofer.agregarChofer("San Antonio", nombre, edad, run, telefono, direccion, correo, true);
+                    if(a!=1)
+                        JOptionPane.showMessageDialog(vistaAgregarChofer, "El chofer ya existe en el sistema");
+                    else
+                        JOptionPane.showMessageDialog(vistaAgregarChofer, "Chofer agregado exitosamente");
                 }
-                JOptionPane.showMessageDialog(vistaAgregarChofer, "Chofer agregado exitosamente");
             }else{
-                JOptionPane.showMessageDialog(vistaAgregarChofer, "El chofer con run "+chofer.getRUN()+" ya existe en el sistema");
+                JOptionPane.showMessageDialog(vistaAgregarChofer, "El chofer ya existe en el sistema");
             }
         }
     }

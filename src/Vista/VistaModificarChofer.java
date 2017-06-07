@@ -36,9 +36,9 @@ public class VistaModificarChofer extends javax.swing.JFrame {
         txtIngresarTelefonoModificar = new javax.swing.JTextField();
         txtIngresarDireccionModificar = new javax.swing.JTextField();
         txtIngresarCorreoModificar = new javax.swing.JTextField();
-        comboBoxCambiarEstadoChofer = new javax.swing.JComboBox<>();
         botonModificarChofer = new javax.swing.JToggleButton();
         botonAtrasAOpciones = new javax.swing.JButton();
+        comboBoxOpcionEstado = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,20 +52,20 @@ public class VistaModificarChofer extends javax.swing.JFrame {
 
         jLabel5.setText("Estado");
 
-        comboBoxCambiarEstadoChofer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bloqueo temporal", "Bloqueo permanente", "Activo" }));
-
         botonModificarChofer.setText("Modificar chofer");
 
         botonAtrasAOpciones.setText("Atrás");
+
+        comboBoxOpcionEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Bloqueado", "Bloqueado Temporalmente" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,17 +78,17 @@ public class VistaModificarChofer extends javax.swing.JFrame {
                                     .addComponent(jLabel1))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(comboBoxCambiarEstadoChofer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtIngresarNombreModificar)
                             .addComponent(txtIngresarTelefonoModificar)
                             .addComponent(txtIngresarDireccionModificar)
-                            .addComponent(txtIngresarCorreoModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
+                            .addComponent(txtIngresarCorreoModificar)
+                            .addComponent(comboBoxOpcionEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
                         .addComponent(botonModificarChofer)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(botonAtrasAOpciones)))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,12 +112,12 @@ public class VistaModificarChofer extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(comboBoxCambiarEstadoChofer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboBoxOpcionEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonModificarChofer)
                     .addComponent(botonAtrasAOpciones))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -161,7 +161,7 @@ public class VistaModificarChofer extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton botonAtrasAOpciones;
     public javax.swing.JToggleButton botonModificarChofer;
-    public javax.swing.JComboBox<String> comboBoxCambiarEstadoChofer;
+    public javax.swing.JComboBox<String> comboBoxOpcionEstado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

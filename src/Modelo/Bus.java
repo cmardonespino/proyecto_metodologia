@@ -49,7 +49,7 @@ public class Bus {
         ArrayList<String> buses = new ArrayList<String>();
         Connection accesoDB = conexion.conectar();
         try{
-            PreparedStatement ps = accesoDB.prepareStatement("SELECT * FROM terminal WHERE estado='"+true+"'");
+            PreparedStatement ps = accesoDB.prepareStatement("SELECT * FROM terminal WHERE estado="+true+"");
             rs = ps.executeQuery();
             int a = 0;
             while(rs.next()) {

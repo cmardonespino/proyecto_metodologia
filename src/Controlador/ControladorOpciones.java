@@ -22,6 +22,7 @@ public class ControladorOpciones implements ActionListener{
     VistaBuscarChofer vistaBuscarChofer = new VistaBuscarChofer();
     VistaBuscarBus vbbus = new VistaBuscarBus();
     VistaChoferesDisponibles vchd = new VistaChoferesDisponibles();
+    VistaBusesDisponibles vbd = new VistaBusesDisponibles();
     
     //VistaAgregarBus vistaAgregarBus = new VistaAgregarBus();
     
@@ -81,7 +82,9 @@ public class ControladorOpciones implements ActionListener{
             }else if(o == "Modificar Bus"){
                 //
             }else if(o == "Buses Disponibles"){
-                //
+                ControladorBusesDisponibles controladorBusesDisponibles = new ControladorBusesDisponibles(vbd, chofer);
+                vbd.setVisible(true);
+                vistaOpciones.setVisible(false);
             }else if(o == "Viajes Disponibles"){
                 //
             }

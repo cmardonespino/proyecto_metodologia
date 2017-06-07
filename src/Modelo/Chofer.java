@@ -116,42 +116,40 @@ public class Chofer extends Persona{
         }
     }
     
-    public Chofer modificarChofer(String run){
-        Chofer chofer = null;
+    public Integer modificarChofer(String run, String nombre, String telefono, String direccion, String correo, Boolean estado){
+        ArrayList<String> choferes = new ArrayList<String>();
         Connection accesoDB = conexion.conectar();
         try{
-            PreparedStatement ps = accesoDB.prepareStatement("SELECT * FROM chofer WHERE run='"+run+"'");
-            rs = ps.executeQuery();
-            int a = 0;
-            while(rs.next()) {
-                chofer = new Chofer();
-                chofer.setRUN(rs.getString("run"));
-            }
-            return chofer;
+            ps = accesoDB.prepareStatement("UPDATE chofer SET nombre='"+nombre+"', telefono='"+telefono+"', correo='"+correo+"', direccion='"+direccion+"', estado="+estado+" WHERE id_chofer='"+run+"'");
+            int a = ps.executeUpdate();
+            return 1;
         }catch(Exception e){
-            return chofer;
+            return 0;
         }
     }
     
-    public Chofer verificarChofer(String run){
-        Chofer chofer = null;
+    public ArrayList<String> verificarChofer(String run){
+        ArrayList<String> choferes = new ArrayList<String>();
         Connection accesoDB = conexion.conectar();
         try{
-            PreparedStatement ps = accesoDB.prepareStatement("SELECT * FROM chofer WHERE run='"+run+"'");
+            PreparedStatement ps = accesoDB.prepareStatement("SELECT * FROM chofer WHERE id_chofer='"+run+"'");
             rs = ps.executeQuery();
             int a = 0;
             while(rs.next()) {
-                chofer = new Chofer();
-                chofer.setRUN(rs.getString("run"));
-                chofer.setEstado(rd.getBoolean("estado"));
+                choferes.add(rs.getString("id_chofer"));
+                choferes.add(rs.getString("nombre"));
+                choferes.add(rs.getString("telefono"));
+                choferes.add(rs.getString("direccion"));
+                choferes.add(rs.getString("correo"));
+                choferes.add(Boolean.toString(rs.getBoolean("estado")));
             }
-            return chofer;
+            return choferes;
         }catch(Exception e){
-            return chofer;
+            return choferes;
         }
     }
     
-    public Chofer agregarChofer(String ubicacion, String nombre, int edad, String run, String telefono, String direccion, String correo, boolean estado){
+    public Integer agregarChofer(String ubicacion, String nombre, int edad, String run, String telefono, String direccion, String correo, boolean estado){
         Chofer chofer = null;
         Connection accesoDB = conexion.conectar();
         int rsu = 0;
@@ -159,9 +157,9 @@ public class Chofer extends Persona{
                 ps = accesoDB.prepareStatement("INSERT INTO chofer (id_chofer, nombre, edad, telefono, correo, ubicacion, direccion, estado) " +
                 "VALUES ('"+run+"', '"+nombre+"', "+edad+", '"+telefono+"', '"+correo+"', '"+ubicacion+"', '"+direccion+"', "+true+")");
                 rsu = ps.executeUpdate();
-                return chofer;
+                return 1;
             }catch(Exception e){
-                return chofer;
+                return 0;
         }
     }
     
