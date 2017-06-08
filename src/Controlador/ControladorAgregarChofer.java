@@ -6,6 +6,7 @@
 package Controlador;
 
 import Modelo.Chofer;
+import Modelo.Turno;
 import Vista.VistaAgregarChofer;
 import Vista.VistaOpciones;
 import java.awt.event.ActionEvent;
@@ -21,6 +22,7 @@ public class ControladorAgregarChofer implements ActionListener{
     VistaAgregarChofer vistaAgregarChofer = new VistaAgregarChofer();
     VistaOpciones vistaOpciones = new VistaOpciones();
     Chofer chofer = new Chofer();
+    Turno turno = new Turno();
     
     Object opcion = new Object();
     
@@ -59,14 +61,18 @@ public class ControladorAgregarChofer implements ActionListener{
                     int a = chofer.agregarChofer("Santiago", nombre, edad, run, telefono, direccion, correo, true);
                     if(a!=1)
                         JOptionPane.showMessageDialog(vistaAgregarChofer, "El chofer ya existe en el sistema");
-                    else
+                    else{
                         JOptionPane.showMessageDialog(vistaAgregarChofer, "Chofer agregado exitosamente");
+                        int b = turno.asignarTurno(run);
+                    }
                 }else if(opcion=="San Antonio"){
                     int a = chofer.agregarChofer("San Antonio", nombre, edad, run, telefono, direccion, correo, true);
                     if(a!=1)
                         JOptionPane.showMessageDialog(vistaAgregarChofer, "El chofer ya existe en el sistema");
-                    else
+                    else{
                         JOptionPane.showMessageDialog(vistaAgregarChofer, "Chofer agregado exitosamente");
+                        int b = turno.asignarTurno(run);
+                    }
                 }
             }else{
                 JOptionPane.showMessageDialog(vistaAgregarChofer, "El chofer ya existe en el sistema");

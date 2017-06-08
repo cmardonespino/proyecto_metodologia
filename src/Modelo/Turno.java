@@ -5,8 +5,16 @@
  */
 package Modelo;
 
+import java.awt.List;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -75,24 +83,72 @@ public class Turno {
         this.descanso_final = descanso_final;
     }
     
-    public Turno asignarTurno(){
-        Turno turno = null;
-        return turno;
+    public ArrayList<String> ordenarViajes(ArrayList<String> a){
+        ArrayList<String> b = new ArrayList<String>();
+        ArrayList<String> c = new ArrayList<String>();
+        int j=0;
+        
+        for(int i=0;i<(a.size());i++){
+            if(a.get(i)=="true"){
+                b.add(a.get(i));
+                c.add(b.toString());
+                b.clear();
+            }else{
+                b.add(a.get(i));
+            }
+        }
+        /*SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        Date parsedDate = dateFormat.parse(c.get(0));
+        Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());*/
+        System.out.println("viajes: "+c);
+        return b;
     }
     
-    public Turno verificarBusDisponible(){
-        Turno turno = null;
-        return turno;
+    public Integer asignarTurno(String run){
+        String a = verificarBusDisponible();
+        if(a=="null"){
+            return 0;
+        }else{
+            ArrayList<String> b = new ArrayList<String>();
+            b = verificarsViajeDisponibles();
+            if(b.isEmpty()){
+                return 0;
+            }else{
+                ArrayList<String> c = new ArrayList<String>();
+                c = ordenarViajes(b);
+            }
+        }
+        return 0;
     }
     
-    public Turno verificarChoferDisponible(String run){
-        Turno t = null;
-        Chofer turno = null;
-        return t;
+    public String verificarBusDisponible(){
+        Turno turno = null;
+        Bus busd = new Bus();
+        ArrayList<String> bus = new ArrayList<String>();
+        bus = busd.busesDisponibles();
+        if(bus.isEmpty()){
+            return "null";
+        }else{
+            return bus.get(0);
+        }
     }
     
-    public Turno verificarViajeDisponible(){
-        Turno turno = null;
-        return turno;
+    public Integer verificarChoferDisponible(String run){
+        Chofer chd = new Chofer();
+        ArrayList<String> ch = new ArrayList<String>();
+        ch = chd.choferesDisponibles();
+        if(ch.isEmpty()){
+            return 0;
+        }else{
+            
+            return 1;
+        }
+    }
+    
+    public ArrayList<String> verificarsViajeDisponibles(){
+        Viaje viaje = new Viaje();
+        ArrayList<String> v = new ArrayList<String>();
+        v = viaje.viajesDisponibles();
+        return v;
     }
 }
