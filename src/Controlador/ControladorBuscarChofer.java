@@ -3,6 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+
+/* https://stackoverflow.com/questions/7375827/how-to-print-text-to-a-text-area */
+
 package Controlador;
 
 import Modelo.Chofer;
@@ -47,9 +51,29 @@ public class ControladorBuscarChofer implements ActionListener{
     class VentanaModificar implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
+            ArrayList<String> choferes = new ArrayList<String>();
             String run = vistaBuscarChofer.txtIngresarRUN.getText();
+            /* llamamos al metodo verificarChofer para recuperar todos los datos del chofer */
+            choferes = chofer.verificarChofer(run);
             if(!run.equals("")){
-                JOptionPane.showMessageDialog(vistaOpciones, "Se modificará los datos del chofer con run: "+run);
+                /* mostramos en la vista de modificarChofer los datos actuales que tiene el chofer registrados */
+                /* en el sistema */
+                vistaModificarChofer.txtIngresarNombreModificar.setText(choferes.get(1));
+                vistaModificarChofer.txtIngresarTelefonoModificar.setText(choferes.get(2));
+                vistaModificarChofer.txtIngresarDireccionModificar.setText(choferes.get(3));
+                vistaModificarChofer.txtIngresarCorreoModificar.setText(choferes.get(4));
+                if(choferes.get(5)=="true"){
+                   JOptionPane.showMessageDialog(vistaModificarChofer, "Chofer se encuentra Activo");
+                }else if(choferes.get(5)=="false"){
+                   JOptionPane.showMessageDialog(vistaModificarChofer, "Chofer se encuentra Bloqueado");
+                }
+                /*if(choferes.get(5)=="true"){
+                    vistaModificarChofer.checkBoxActivo.setSelected(true);
+                }else if(choferes.get(5)=="false"){
+                    vistaModificarChofer.checkBoxBloqueado.setSelected(true);
+                }else{
+                    vistaModificarChofer.checkBoxBloqueoTemporal.setSelected(true);
+                }*/
                 ControladorModificarChofer controladorModificarChofer = new ControladorModificarChofer(vistaModificarChofer, chofer, run);
                 vistaModificarChofer.setVisible(true);
                 vistaBuscarChofer.setVisible(false);
