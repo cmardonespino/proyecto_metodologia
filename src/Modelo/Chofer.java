@@ -19,14 +19,14 @@ public class Chofer extends Persona{
     public ResultSet rs, rd;
     PreparedStatement pd, ps, pf, pg;
     String IDChofer;
-    boolean estado;
+    int estado;
     
     public Chofer(){
         conexion = new ConexionBasedeDatos(); // GUARDAMOS EL OBJETO DE LA CLASE CONEXION EN ESTA VARIABLE
                                     //PARA LUEGO LLAMAR A LOS METODOS DE ESTA CLASE. EN ESTE CASO
                                     //LLAMAREMOS MAS ABAJO "CONECTAR"
         IDChofer = "";
-        estado = false;
+        estado = 0;
     }
 
     public String getIDChofer() {
@@ -37,11 +37,11 @@ public class Chofer extends Persona{
         this.IDChofer = IDChofer;
     }
 
-    public boolean isEstado() {
+    public Integer isEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
 
@@ -132,16 +132,15 @@ public class Chofer extends Persona{
         ArrayList<String> choferes = new ArrayList<String>();
         Connection accesoDB = conexion.conectar();
         try{
-            PreparedStatement ps = accesoDB.prepareStatement("SELECT * FROM chofer WHERE id_chofer='"+run+"'");
+            ps = accesoDB.prepareStatement("SELECT * FROM chofer WHERE id_chofer='"+run+"'");
             rs = ps.executeQuery();
-            int a = 0;
             while(rs.next()) {
                 choferes.add(rs.getString("id_chofer"));
                 choferes.add(rs.getString("nombre"));
                 choferes.add(rs.getString("telefono"));
                 choferes.add(rs.getString("direccion"));
                 choferes.add(rs.getString("correo"));
-                choferes.add(Boolean.toString(rs.getBoolean("estado")));
+                choferes.add(Integer.toString(rs.getInt("estado")));
             }
             return choferes;
         }catch(Exception e){
@@ -149,13 +148,13 @@ public class Chofer extends Persona{
         }
     }
     
-    public Integer agregarChofer(String ubicacion, String nombre, int edad, String run, String telefono, String direccion, String correo, boolean estado){
+    public Integer agregarChofer(String ubicacion, String nombre, int edad, String run, String telefono, String direccion, String correo, int estado){
         Chofer chofer = null;
         Connection accesoDB = conexion.conectar();
         int rsu = 0;
         try{
             ps = accesoDB.prepareStatement("INSERT INTO chofer (id_chofer, nombre, edad, telefono, correo, ubicacion, direccion, estado) " +
-                "VALUES ('"+run+"', '"+nombre+"', "+edad+", '"+telefono+"', '"+correo+"', '"+ubicacion+"', '"+direccion+"', "+true+")");
+                "VALUES ('"+run+"', '"+nombre+"', "+edad+", '"+telefono+"', '"+correo+"', '"+ubicacion+"', '"+direccion+"', "+estado+")");
             rsu = ps.executeUpdate();
             return 1;
         }catch(Exception e){

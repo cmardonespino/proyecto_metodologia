@@ -58,20 +58,20 @@ public class ControladorAgregarChofer implements ActionListener{
                 String direccion = vistaAgregarChofer.txtIngresarDireccion.getText();
                 opcion = vistaAgregarChofer.comboBoxUbicacion.getSelectedItem();
                 if(opcion=="Santiago"){
-                    int a = chofer.agregarChofer("Santiago", nombre, edad, run, telefono, direccion, correo, true);
+                    int a = chofer.agregarChofer("Santiago", nombre, edad, run, telefono, direccion, correo, 1);
                     if(a!=1)
                         JOptionPane.showMessageDialog(vistaAgregarChofer, "El chofer ya existe en el sistema");
                     else{
                         JOptionPane.showMessageDialog(vistaAgregarChofer, "Chofer agregado exitosamente");
-                        int b = turno.asignarTurno(run);
+                        int b = turno.asignarTurno(run, "Santiago");
                     }
                 }else if(opcion=="San Antonio"){
-                    int a = chofer.agregarChofer("San Antonio", nombre, edad, run, telefono, direccion, correo, true);
+                    int a = chofer.agregarChofer("San Antonio", nombre, edad, run, telefono, direccion, correo, 1);
                     if(a!=1)
                         JOptionPane.showMessageDialog(vistaAgregarChofer, "El chofer ya existe en el sistema");
                     else{
                         JOptionPane.showMessageDialog(vistaAgregarChofer, "Chofer agregado exitosamente");
-                        int b = turno.asignarTurno(run);
+                        int b = turno.asignarTurno(run, "San Antonio");
                     }
                 }
             }else{

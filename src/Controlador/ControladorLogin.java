@@ -47,10 +47,24 @@ public class ControladorLogin implements ActionListener{
             ArrayList<String> admin = new ArrayList<String>();
             String user = vistaLogin.txtIngresarUsuario.getText();
             char[] password = vistaLogin.txtIngresarPasswordLogin.getPassword();
-            admin = administrador.verificarUsuario(user, String.valueOf(password));
+            //boolean a = administrador.validarRut(user);
+            //admin = administrador.verificarUsuario(user, String.valueOf(password));
             /*JOptionPane.showMessageDialog(vistaLogin, user);
             JOptionPane.showMessageDialog(vistaLogin, password);*/
-            if(admin.isEmpty()){
+            if(administrador.validarRut(user)==true){
+                admin = administrador.verificarUsuario(user, String.valueOf(password));
+                if(admin.isEmpty()){
+                    JOptionPane.showMessageDialog(vistaLogin, "Usuario o contraseña incorrecta");
+                }else{
+                    JOptionPane.showMessageDialog(vistaLogin, "Bienvenido "+ admin.get(0));
+                    ControladorOpciones controladorOpciones = new ControladorOpciones(vistaOpciones);
+                    vistaOpciones.setVisible(true);
+                    vistaLogin.setVisible(false);
+                }
+            }else{
+                JOptionPane.showMessageDialog(vistaLogin, "Ingrese rut valido");
+            }
+            /*if(admin.isEmpty()){
                 JOptionPane.showMessageDialog(vistaLogin, "Usuario o contraseña incorrecta");
             }else{
                 String nombre = administrador.getNombre();
@@ -58,7 +72,7 @@ public class ControladorLogin implements ActionListener{
                 ControladorOpciones controladorOpciones = new ControladorOpciones(vistaOpciones);
                 vistaOpciones.setVisible(true);
                 vistaLogin.setVisible(false);
-            }
+            }*/
         }
     }
     

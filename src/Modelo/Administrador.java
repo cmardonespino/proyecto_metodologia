@@ -96,15 +96,38 @@ public class Administrador extends Persona{
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-    
+    public boolean validarRut(String rut) {
+ 
+        boolean validacion = false;
+        try {
+            rut =  rut.toUpperCase();
+            rut = rut.replace(".", "");
+            rut = rut.replace("-", "");
+        int rutAux = Integer.parseInt(rut.substring(0, rut.length() - 1));
+ 
+        char dv = rut.charAt(rut.length() - 1);
+ 
+        int m = 0, s = 1;
+        for (; rutAux != 0; rutAux /= 10) {
+            s = (s + rutAux % 10 * (9 - m++ % 6)) % 11;
+        }
+        if (dv == (char) (s != 0 ? s + 47 : 75)) {
+            validacion = true;
+        }
+ 
+        } catch (java.lang.NumberFormatException e) {
+        } catch (Exception e) {
+        }
+        return validacion;
+    }
     public ArrayList<String> verificarUsuario(String usuario, String password){
         Administrador administrador = null;
         ArrayList<String> vusuario = new ArrayList<String>();
         Connection accesoDB = conexion.conectar();
-        if(!usuario.matches("[0-9]+")){
+        /*if(!usuario.matches("[0-9]+")){
             return vusuario;
         }
-        else{
+        else{*/
             try{
                 PreparedStatement ps = accesoDB.prepareStatement("SELECT * FROM administrador WHERE id_admin='"+usuario+"' and password='"+password+"'");
                 rs = ps.executeQuery();
@@ -121,7 +144,7 @@ public class Administrador extends Persona{
             }catch(Exception e){
                 return vusuario;
             }
-        }
+        //}
     }
     
 }
