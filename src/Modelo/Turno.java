@@ -228,11 +228,7 @@ public class Turno {
         buses = b.busesDisponibles();
         /*Obtenermos todos los viajes disponibles en el ArrayList*/
         viajes = v.viajesDisp();
-        if(viajes.isEmpty()){
-            System.out.println("Vacio");
-        }else{
-            System.out.println("nel");
-        }
+        
         
         
         

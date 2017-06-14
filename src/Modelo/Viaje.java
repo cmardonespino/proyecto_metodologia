@@ -124,7 +124,7 @@ public class Viaje {
             PreparedStatement ps = accesoDB.prepareStatement("SELECT * FROM viaje WHERE estado="+true+"");
             rs = ps.executeQuery();
             while(rs.next()) {
-               viajes.add(new Viaje(rs.getTime("hora_inicio"), rs.getTime("hora_destino"), rs.getString("punto_inicio"), rs.getString("punto_final"), rs.getInt(dia), rs.getInt("estado")!=0));
+               viajes.add(new Viaje(rs.getTime(2), rs.getTime(3), rs.getString(5), rs.getString(6), rs.getInt(7), (rs.getInt(4)!=0)));    
             }
             return viajes;
         }catch(Exception e){
