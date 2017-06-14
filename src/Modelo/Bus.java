@@ -19,7 +19,8 @@ public class Bus {
     public ResultSet rs,rs2, rs3; 
     PreparedStatement pd, ps, pf, pg;
     String patente;
-    boolean estado;
+    Boolean estado;
+    String ubicacion;
     
     public Bus(){
         patente = "";
@@ -28,6 +29,14 @@ public class Bus {
                                     //PARA LUEGO LLAMAR A LOS METODOS DE ESTA CLASE. EN ESTE CASO
                                     //LLAMAREMOS MAS ABAJO "CONECTAR"
     }
+
+    public Bus(String patente, Boolean estado, String ubicacion) {
+        conexion = new ConexionBasedeDatos();
+        this.patente = patente;
+        this.estado = estado;
+        this.ubicacion = ubicacion;
+    }
+    
 
     public String getPatente() {
         return patente;
@@ -43,6 +52,14 @@ public class Bus {
 
     public void setEstado(boolean estado) {
         this.estado = estado;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
     
     public ArrayList<String> verificarBus(String patente){
@@ -63,17 +80,18 @@ public class Bus {
         }
     }
     
-    public ArrayList<String> busesDisponibles(){
-        ArrayList<String> buses = new ArrayList<String>();
+    public ArrayList<Bus> busesDisponibles(){
+        ArrayList<Bus> buses = new ArrayList<Bus>();
         Connection accesoDB = conexion.conectar();
         try{
-            PreparedStatement ps = accesoDB.prepareStatement("SELECT * FROM terminal WHERE estado="+true+"");
+            PreparedStatement ps = accesoDB.prepareStatement("SELECT * FROM bus WHERE estado=1");
             rs = ps.executeQuery();
             int a = 0;
             while(rs.next()) {
-                buses.add(rs.getString("id_bus"));
+                buses.add(new Bus(rs.getString(1), (rs.getInt(3)!=0), rs.getString(2)));
+                /*buses.add(rs.getString("id_bus"));
                 buses.add(rs.getString("ubicacion"));
-                buses.add(Boolean.toString(rs.getBoolean("estado")));
+                buses.add(Boolean.toString(rs.getBoolean("estado")));*/
             }
             return buses;
         }catch(Exception e){

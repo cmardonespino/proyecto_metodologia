@@ -211,6 +211,9 @@ public class Turno {
     public void asignarTodos(){
         String diaDelMes, fecha = null;
         int diasLibres, viajesDelDia = 0;
+        Chofer c = new Chofer();
+        Bus b = new Bus();
+        Viaje v = new Viaje();
         ArrayList <Chofer> choferes= new ArrayList<Chofer>();
         ArrayList <Bus> buses = new ArrayList<Bus>();
         ArrayList <Viaje> viajes = new ArrayList<Viaje>();
@@ -219,6 +222,18 @@ public class Turno {
         cal.add(Calendar.MONTH, 2);
         fecha = String.valueOf(cal.get(Calendar.MONTH));
         //System.out.println(fecha);
+        /*Obtenemos todos los choferes disponibles en el ArrayList*/
+        choferes = c.choferesDisponibles();
+        /*Obtenemos todos los buses disponibles en el ArrayList*/
+        buses = b.busesDisponibles();
+        /*Obtenermos todos los viajes disponibles en el ArrayList*/
+        viajes = v.viajesDisp();
+        if(viajes.isEmpty()){
+            System.out.println("Vacio");
+        }else{
+            System.out.println("nel");
+        }
+        
         
         
         
@@ -238,7 +253,7 @@ public class Turno {
         Turno turno = null;
         Bus busd = new Bus();
         ArrayList<String> bus = new ArrayList<String>();
-        bus = busd.busesDisponibles();
+        //bus = busd.busesDisponibles();
         if(bus.isEmpty()){
             return "null";
         }else{
@@ -249,7 +264,7 @@ public class Turno {
     public Integer verificarChoferDisponible(String run){
         Chofer chd = new Chofer();
         ArrayList<String> ch = new ArrayList<String>();
-        ch = chd.choferesDisponibles();
+        //ch = chd.choferesDisponibles();
         if(ch.isEmpty()){
             return 0;
         }else{

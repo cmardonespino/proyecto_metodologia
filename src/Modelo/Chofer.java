@@ -18,23 +18,32 @@ public class Chofer extends Persona{
     ConexionBasedeDatos conexion; //INSTANCIAMOS LA VARIABLE PARA EL OBJETO CONEXION
     public ResultSet rs, rd;
     PreparedStatement pd, ps, pf, pg;
-    String IDChofer;
+    String ubicacion;
     int estado;
     
     public Chofer(){
         conexion = new ConexionBasedeDatos(); // GUARDAMOS EL OBJETO DE LA CLASE CONEXION EN ESTA VARIABLE
                                     //PARA LUEGO LLAMAR A LOS METODOS DE ESTA CLASE. EN ESTE CASO
                                     //LLAMAREMOS MAS ABAJO "CONECTAR"
-        IDChofer = "";
+        ubicacion = "";
         estado = 0;
     }
 
-    public String getIDChofer() {
-        return IDChofer;
+    public Chofer(String ubicacion, int estado, String nombre, int edad, String direccion, String RUN, String telefono, String correo) {
+        super(nombre, edad, direccion, RUN, telefono, correo);
+        this.conexion = new ConexionBasedeDatos();
+        this.ubicacion = ubicacion;
+        this.estado = estado;
     }
 
-    public void setIDChofer(String IDChofer) {
-        this.IDChofer = IDChofer;
+   
+    
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
 
     public Integer isEstado() {
@@ -93,22 +102,23 @@ public class Chofer extends Persona{
         this.correo = correo;
     }
     
-    public ArrayList<String> choferesDisponibles(){
-        ArrayList<String> choferes = new ArrayList<String>();
+    public ArrayList<Chofer> choferesDisponibles(){
+        ArrayList<Chofer> choferes = new ArrayList<Chofer>();
         Connection accesoDB = conexion.conectar();
         try{
             PreparedStatement ps = accesoDB.prepareStatement("SELECT * FROM chofer WHERE estado="+true+"");
             rs = ps.executeQuery();
             int a = 0;
             while(rs.next()) {
-                choferes.add(rs.getString("id_chofer"));
+                choferes.add(new Chofer(rs.getString("ubicacion"), rs.getInt("estado"), rs.getString("nombre"), rs.getInt("edad"), rs.getString("direccion"), rs.getString("id_chofer"), rs.getString("telefono"), rs.getString("correo")));
+                /*choferes.add(rs.getString("id_chofer"));
                 choferes.add(rs.getString("nombre"));
                 choferes.add(rs.getString("edad"));
                 choferes.add(rs.getString("telefono"));
                 choferes.add(rs.getString("correo"));
                 choferes.add(rs.getString("ubicacion"));
                 choferes.add(rs.getString("direccion"));
-                choferes.add(Boolean.toString(rs.getBoolean("estado")));
+                choferes.add(Boolean.toString(rs.getBoolean("estado")));*/
             }
             return choferes;
         }catch(Exception e){
