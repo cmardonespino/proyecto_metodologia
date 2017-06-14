@@ -12,6 +12,7 @@ package Modelo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -120,6 +121,24 @@ public class Administrador extends Persona{
         }
         return validacion;
     }
+    public String verificarAdmin(String usuario, String password){
+        Administrador adm = null;
+        Connection DB = conexion.conectar();
+        PreparedStatement pst;
+        try {
+            pst = DB.prepareStatement("SELECT * FROM administrador WHERE run='"+usuario+"' AND password='"+password+"'");
+            rs = pst.executeQuery();
+            if(rs.next()){
+               return rs.getString(3);
+            }else{
+                return "";
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return "";
+    }
+    
     public ArrayList<String> verificarUsuario(String usuario, String password){
         Administrador administrador = null;
         ArrayList<String> vusuario = new ArrayList<String>();

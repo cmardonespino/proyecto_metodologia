@@ -6,6 +6,7 @@
 package Controlador;
 
 import Modelo.Administrador;
+import Modelo.Turno;
 import Vista.VistaLogin;
 import Vista.VistaOpciones;
 import java.awt.event.ActionEvent;
@@ -52,14 +53,27 @@ public class ControladorLogin implements ActionListener{
             /*JOptionPane.showMessageDialog(vistaLogin, user);
             JOptionPane.showMessageDialog(vistaLogin, password);*/
             if(administrador.validarRut(user)==true){
-                admin = administrador.verificarUsuario(user, String.valueOf(password));
+                /*admin = administrador.verificarUsuario(user, String.valueOf(password));
                 if(admin.isEmpty()){
                     JOptionPane.showMessageDialog(vistaLogin, "Usuario o contraseña incorrecta");
                 }else{
                     JOptionPane.showMessageDialog(vistaLogin, "Bienvenido "+ admin.get(0));
                     ControladorOpciones controladorOpciones = new ControladorOpciones(vistaOpciones);
+                    Turno t1 = new Turno();
+                    t1.asignarTodos("07");
                     vistaOpciones.setVisible(true);
                     vistaLogin.setVisible(false);
+                }*/
+                if(administrador.verificarAdmin(user, String.valueOf(password)).equals("")){
+                    JOptionPane.showMessageDialog(vistaLogin, "Usuario o contraseña incorrecta");
+                }else{
+                    JOptionPane.showMessageDialog(vistaLogin, "Bienvenido "+ administrador.verificarAdmin(user, String.valueOf(password)));
+                    ControladorOpciones controladorOpciones = new ControladorOpciones(vistaOpciones);
+                    vistaOpciones.setVisible(true);
+                    vistaLogin.setVisible(false);
+                    Turno t1 = new Turno();
+                    t1.asignarTodos();
+
                 }
             }else{
                 JOptionPane.showMessageDialog(vistaLogin, "Ingrese rut valido");

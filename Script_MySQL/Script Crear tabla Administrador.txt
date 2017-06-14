@@ -1,9 +1,0 @@
-CREATE TABLE administrador (
-nombre VARCHAR(30) NOT NULL,
-edad int,
-run VARCHAR(30) NOT NULL,
-telefono VARCHAR(30) NOT NULL,
-correo VARCHAR(30) NOT NULL,
-user VARCHAR(30) NOT NULL,
-password VARCHAR(30) NOT NULL
-)

@@ -16,7 +16,7 @@ public class ConexionBasedeDatos {
     private static String nombreDB = "proyecto_metodologia";
     private static String user = "root";
     private static String pass = "root";
-    private static String host = "localhost:3308";
+    private static String host = "localhost:3306";
     private static String server = "jdbc:mysql://"+host+"/"+nombreDB;
     public Connection conectar(){
         Connection cn = null;

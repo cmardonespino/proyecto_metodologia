@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -19,6 +20,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -205,7 +208,21 @@ public class Turno {
             return viajeAAsignar;
         }
     }
-    
+    public void asignarTodos(){
+        String diaDelMes, fecha = null;
+        int diasLibres, viajesDelDia = 0;
+        ArrayList <Chofer> choferes= new ArrayList<Chofer>();
+        ArrayList <Bus> buses = new ArrayList<Bus>();
+        ArrayList <Viaje> viajes = new ArrayList<Viaje>();
+        /* Obtenemos el mes actual y le sumamos uno para obtener el mes siguiente*/
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MONTH, 2);
+        fecha = String.valueOf(cal.get(Calendar.MONTH));
+        //System.out.println(fecha);
+        
+        
+        
+    }
     public Integer asignarTurno(String run, String ubicacion){
         String a = asignarBus(ubicacion);
         if(a=="null"){
