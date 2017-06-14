@@ -44,7 +44,7 @@ public class ControladorBusesDisponibles {
         public void actionPerformed(ActionEvent e){
             ArrayList<String> buses = new ArrayList<String>();
             String filas[] = new String[100];
-            buses = bus.busesDisponibles();
+            //buses = bus.busesDisponibles();
             if(buses.isEmpty()){
                 JOptionPane.showMessageDialog(vbd, "No hay buses disponibles");
             }else{
