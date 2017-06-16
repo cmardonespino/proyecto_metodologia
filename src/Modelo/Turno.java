@@ -209,25 +209,57 @@ public class Turno {
         }
     }
     public void asignarTodos(){
-        String diaDelMes, fecha = null;
-        int diasLibres, viajesDelDia = 0;
+        String diaDelMes, fecha, inicioVacaciones, finalVacaciones, aux = null;
+        String[] splitter = new String[2];
+        int diasLibres, viajesDelDia, lib1,lib2,month = 0;
+        int dia = 1;
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Chofer c = new Chofer();
         Bus b = new Bus();
         Viaje v = new Viaje();
+        Administrador admin = new Administrador();
         ArrayList <Chofer> choferes= new ArrayList<Chofer>();
         ArrayList <Bus> buses = new ArrayList<Bus>();
         ArrayList <Viaje> viajes = new ArrayList<Viaje>();
         /* Obtenemos el mes actual y le sumamos uno para obtener el mes siguiente*/
         Calendar cal = Calendar.getInstance();
+        Calendar cal1 = Calendar.getInstance();
         cal.add(Calendar.MONTH, 2);
-        fecha = String.valueOf(cal.get(Calendar.MONTH));
         //System.out.println(fecha);
         /*Obtenemos todos los choferes disponibles en el ArrayList*/
         choferes = c.choferesDisponibles();
         /*Obtenemos todos los buses disponibles en el ArrayList*/
         buses = b.busesDisponibles();
-        /*Obtenermos todos los viajes disponibles en el ArrayList*/
+        /*Obtenemos todos los viajes disponibles en el ArrayList*/
         viajes = v.viajesDisp();
+        if(cal.getActualMaximum(Calendar.DAY_OF_MONTH) < 31){
+            v.bloquearViajes(1);
+        }
+        if(admin.vacacionesSolicitudes("10108004-8").equals("")){
+            inicioVacaciones="vacio";
+            finalVacaciones = "vacio";
+        }else{
+           aux = admin.vacacionesSolicitudes("10108004-8");
+           splitter = aux.split(";");
+           inicioVacaciones = splitter[0];
+           finalVacaciones = splitter[1];
+            try {
+                d = sdf.parse(inicioVacaciones);
+                cal1.setTime(d);
+                lib1 = cal1.get(Calendar.DAY_OF_MONTH);
+                month = cal1.get(Calendar.MONTH)+1;
+                d = sdf.parse(finalVacaciones);
+                cal1.setTime(d);
+                lib2 = cal1.get(Calendar.DAY_OF_MONTH);
+            } catch (ParseException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        
+        if(cal.get(Calendar.MONTH) == month){
+            
+        }
         
         
         

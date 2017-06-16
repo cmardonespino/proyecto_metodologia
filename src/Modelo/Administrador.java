@@ -165,5 +165,21 @@ public class Administrador extends Persona{
             }
         //}
     }
-    
+    public String vacacionesSolicitudes(String run){
+        Connection accesoDB = conexion.conectar();
+        try {
+            PreparedStatement ps = accesoDB.prepareStatement("SELECT * FROM solicitud WHERE turno_chofer_id_chofer='"+run+"' AND tipo_solicitud=3");
+            rs = ps.executeQuery();
+            if(rs.next()){
+                return (rs.getTimestamp(5)+";"+rs.getTimestamp(6));
+                
+            }else{
+                return "";
+            }
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return "";
+    }
 }
