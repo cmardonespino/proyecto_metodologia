@@ -1,0 +1,2 @@
+use proyecto_metodologia;
+INSERT INTO administrador VALUES("19544660-1","root","Cristopher Herrera",19,"974378910","c.herreratapia@uandresbello.edu");

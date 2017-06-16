@@ -1,0 +1,17 @@
+use proyecto_metodologia;
+INSERT INTO bus VALUES("XX-XX-11", "Melipilla",1);
+INSERT INTO bus VALUES("XX-XX-12", "Melipilla",1);
+INSERT INTO bus VALUES("XX-XX-13", "Melipilla",1);
+INSERT INTO bus VALUES("XX-XX-41", "Melipilla",1);
+INSERT INTO bus VALUES("XX-XX-42", "Melipilla",1);
+INSERT INTO bus VALUES("XX-XX-43", "Melipilla",1);
+INSERT INTO bus VALUES("XX-XX-51", "Melipilla",1);
+INSERT INTO bus VALUES("XX-XX-61", "Melipilla",1);
+INSERT INTO bus VALUES("XX-XX-53", "Melipilla",1);
+INSERT INTO bus VALUES("XX-XX-57", "San Antonio",1);
+INSERT INTO bus VALUES("XX-XX-58", "San Antonio",1);
+INSERT INTO bus VALUES("XX-XX-59", "San Antonio",1);
+INSERT INTO bus VALUES("XX-XX-28", "San Antonio",1);
+INSERT INTO bus VALUES("XX-XX-39", "San Antonio",1);
+INSERT INTO bus VALUES("XX-XX-85", "San Antonio",1);
+INSERT INTO bus VALUES("XX-XX-21", "San Antonio",1);

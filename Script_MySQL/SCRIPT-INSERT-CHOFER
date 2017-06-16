@@ -1,0 +1,17 @@
+use proyecto_metodologia;
+INSERT INTO chofer VALUES("6474818-1","Juan el conductor",60,"99999999","prueba@prueba.com","Melipilla","casita 3245",1);
+INSERT INTO chofer VALUES("7898925-4","Carlos el conductor", 58,"99999999","prueba@prueba.com","Melipilla","casita 3245",1);
+INSERT INTO chofer VALUES("11347269-3", "Mario el conductor", 53,"99999999","prueba@prueba.com","Melipilla","casita 3245",1);
+INSERT INTO chofer VALUES("13779549-3", "Ruben el conductor", 40,"99999999","prueba@prueba.com","Melipilla","casita 3245",1);
+INSERT INTO chofer VALUES("16983734-1", "Ricardo el conductor", 38, "99999999","prueba@prueba.com","Melipilla","casita 3245",1);
+INSERT INTO chofer VALUES("18918126-4", "Jose el conductor", 22,"99999999","prueba@prueba.com","Melipilla","casita 3245",1);
+INSERT INTO chofer VALUES("5024646-9", "Manuel el conductor", 64,"99999999","prueba@prueba.com","Melipilla","casita 3245",1);
+INSERT INTO chofer VALUES("5281726-9", "Marcelo el conductor", 61,"99999999","prueba@prueba.com","Melipilla","casita 3245",1);
+INSERT INTO chofer VALUES("10108004-8", "Nicolas el conductor", 50,"99999999","prueba@prueba.com","Melipilla","casita 3245",1);
+INSERT INTO chofer VALUES("13458664-8", "Andres el  conductor", 42,"99999999","prueba@prueba.com","Melipilla","casita 3245",1);
+INSERT INTO chofer VALUES("14759928-5", "Luis el conductor", 38,"99999999","prueba@prueba.com","Melipilla","casita 3245",1);
+INSERT INTO chofer VALUES("15136157-9", "Alejandro el conductor", 34,"99999999","prueba@prueba.com","San Antonio","casita 3245",1);
+INSERT INTO chofer VALUES("17312560-7", "Roberto el conductor", 25,"99999999","prueba@prueba.com","San Antonio","casita 3245",1);
+INSERT INTO chofer VALUES("14728895-6", "Esteban el conductor", 36,"99999999","prueba@prueba.com","San Antonio","casita 3245",1);
+INSERT INTO chofer VALUES("15893122-2", "Patricio el conductor", 33,"99999999","prueba@prueba.com","San Antonio","casita 3245",1);
+INSERT INTO chofer VALUES("17931495-9", "Cristian el conductor", 27,"99999999","prueba@prueba.com","San Antonio","casita 3245",1);

@@ -42,7 +42,7 @@ public class ControladorChoferesDisponibles implements ActionListener{
         public void actionPerformed(ActionEvent e){
             ArrayList<String> choferes = new ArrayList<String>();
             String filas[] = new String[100];
-            choferes = chofer.choferesDisponibles();
+            //choferes = chofer.choferesDisponibles();
             if(choferes.isEmpty()){
                 JOptionPane.showMessageDialog(vchd, "No hay choferes disponibles");
             }else{
