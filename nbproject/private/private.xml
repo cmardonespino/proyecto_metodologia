@@ -5,7 +5,9 @@
         <group>
             <file>file:/C:/Users/Carlos/Documents/NetBeansProjects/Proyecto_Metodologia/src/Modelo/Bus.java</file>
             <file>file:/C:/Users/Carlos/Documents/NetBeansProjects/Proyecto_Metodologia/src/Modelo/Turno.java</file>
-            <file>file:/C:/Users/Carlos/Documents/NetBeansProjects/Proyecto_Metodologia/src/Modelo/Viaje.java</file>
+            <file>file:/C:/Users/Carlos/Documents/NetBeansProjects/Proyecto_Metodologia/src/Modelo/Chofer.java</file>
+            <file>file:/C:/Users/Carlos/Documents/NetBeansProjects/Proyecto_Metodologia/src/Controlador/ControladorOpciones.java</file>
+            <file>file:/C:/Users/Carlos/Documents/NetBeansProjects/Proyecto_Metodologia/src/Controlador/ControladorAgregarChofer.java</file>
         </group>
     </open-files>
 </project-private>
