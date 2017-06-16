@@ -8,6 +8,7 @@ package Modelo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Time;
 import java.util.ArrayList;
 
@@ -129,6 +130,20 @@ public class Viaje {
             return viajes;
         }catch(Exception e){
             return viajes;
+        }
+    }
+    public void bloquearViajes(int max){
+        Connection accesoDB = conexion.conectar();
+        PreparedStatement ps;
+        int aux = 31;
+        try {
+            for(int i = 0; i < max;i++){
+                aux = 31 - i; 
+                ps = accesoDB.prepareStatement("UPDATE viaje SET estado=0 WHERE dia='"+aux+"'");
+                ps.executeUpdate();
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
     
