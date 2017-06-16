@@ -234,7 +234,7 @@ public class Turno {
         /*Obtenemos todos los viajes disponibles en el ArrayList*/
         viajes = v.viajesDisp();
         if(cal.getActualMaximum(Calendar.DAY_OF_MONTH) < 31){
-            v.bloquearViajes(1);
+            v.bloquearViajes((31-cal.getActualMaximum(Calendar.DAY_OF_MONTH)));
         }
         if(admin.vacacionesSolicitudes("10108004-8").equals("")){
             inicioVacaciones="vacio";
@@ -258,6 +258,8 @@ public class Turno {
         }
         
         if(cal.get(Calendar.MONTH) == month){
+            
+        }else{
             
         }
         
