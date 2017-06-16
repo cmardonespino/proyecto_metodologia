@@ -211,7 +211,7 @@ public class Turno {
     public void asignarTodos(){
         String diaDelMes, fecha, inicioVacaciones, finalVacaciones, aux = null;
         String[] splitter = new String[2];
-        int diasLibres, viajesDelDia, lib1,lib2,month = 0;
+        int diasLibres = 0, viajesDelDia = 0, lib1 = 0,lib2 = 0,month = 0,random = 0;
         int dia = 1;
         Date d = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -234,7 +234,7 @@ public class Turno {
         /*Obtenemos todos los viajes disponibles en el ArrayList*/
         viajes = v.viajesDisp();
         if(cal.getActualMaximum(Calendar.DAY_OF_MONTH) < 31){
-            v.bloquearViajes(1);
+            v.bloquearViajes((31-cal.getActualMaximum(Calendar.DAY_OF_MONTH)));
         }
         if(admin.vacacionesSolicitudes("10108004-8").equals("")){
             inicioVacaciones="vacio";
@@ -258,6 +258,13 @@ public class Turno {
         }
         
         if(cal.get(Calendar.MONTH) == month){
+            
+        }else{
+            random = (int) (Math.random() * choferes.size() ) +1;
+            c = choferes.get(random);
+            b = buses.get(random);
+            
+            
             
         }
         
