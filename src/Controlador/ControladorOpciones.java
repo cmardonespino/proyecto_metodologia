@@ -96,7 +96,7 @@ public class ControladorOpciones implements ActionListener{
             } 
             
     }
-    
+    /*
     class seleccionOpcion implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
@@ -146,5 +146,5 @@ public class ControladorOpciones implements ActionListener{
             vistaLogin.setVisible(true);
             vistaOpciones.setVisible(false);
         }
-    }
+    }*/
 }
