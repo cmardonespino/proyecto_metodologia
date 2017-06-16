@@ -47,7 +47,7 @@ public class ControladorOpciones implements ActionListener{
         
         //this.vistaAgregarBus = vistaAgregarBus;
         
-        this.vistaOpciones.comboBoxOpciones.addActionListener(new seleccionOpcion());
+        this.vistaOpciones.comboBoxOpciones.addActionListener(this);
         this.vistaOpciones.botonCerrarSesion.addActionListener(new cerrarSesion());
     }
     public void InicializarOpciones(){
@@ -56,6 +56,12 @@ public class ControladorOpciones implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent ae) {
+         o = vistaOpciones.comboBoxOpciones.getSelectedItem();
+            if(o=="Agregar Chofer"){
+                ControladorAgregarChofer controladorAgregarChofer = new ControladorAgregarChofer(vistaAgregarChofer, chofer);
+                vistaAgregarChofer.setVisible(true);
+                vistaOpciones.setVisible(false);
+            }
     }
     
     class seleccionOpcion implements ActionListener{
